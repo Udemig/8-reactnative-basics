@@ -13,7 +13,8 @@ const Example = () => {
   return (
     <SafeAreaView style={{flex: 1}}>
       {/* tüm elemanları kapsayan ana view */}
-      <View style={{backgroundColor: 'red'}}>
+      //! flex1 vermelisiniz
+      <View style={{flex: 1, backgroundColor: 'red'}}>
         {/* header alanı oluşturacağım view */}
 
         <View style={styles.header}>
@@ -22,11 +23,11 @@ const Example = () => {
 
           {/* t.o ise sarmaladığı elemente basılabilirlik kazandırır.view ile tek farkı tıklanabilir olmaıs. */}
 
-          <TouchableOpacity style={{alignItems: 'center', marginBottom: 10}}>
+          <TouchableOpacity style={{alignItems: 'center', marginTop: 10}}>
             <Text
               style={{
                 color: 'purple',
-                fontSize: '24',
+                fontSize: 24,
                 backgroundColor: 'yellow',
               }}>
               Özelleştirilebilir Buttonum
@@ -154,7 +155,7 @@ const styles = StyleSheet.create({
   },
   main: {
     backgroundColor: '#FD8B51',
-    flex: 5,
+    flex: 8,
   },
   image: {
     width: 132,

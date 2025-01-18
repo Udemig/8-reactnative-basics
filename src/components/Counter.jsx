@@ -1,8 +1,10 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
+
 import {
   SafeAreaView,
   StyleSheet,
   Text,
+  TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
@@ -10,11 +12,47 @@ import {
 const Counter = () => {
   const [count, setCount] = useState(0);
 
+  const [inputValue, setInputValue] = useState(' ');
+
   // const deger = useState(4);
   // console.log(deger);
 
+  //1) Bileşenin ekrana basılma olayını izle
+  // useEffect(() => {
+  //   console.log('!!!! BİLEŞEN EKRANA BASILDI !!!!!');
+  // }, []);
+
+  //2)Bileşenin ekrandan gitme olayını izle
+  // useEffect(() => {
+  //   return () => console.log('!!!!!!! BİLEŞEN EKRANDAN GİTTİ');
+  // }, []);
+
+  //3) Bileşenin ekrana gelme ve gitme olayını izle
+  // useEffect(() => {
+  //   console.log('<<<<< BİLEŞEN EKRANA BASILDI !!!!!');
+  //   return () => console.log('>>>>> BİLEŞEN EKRANDAN GİTTİ');
+  // }, []);
+
+  //4)Bileşenin update olma olayını izle
+  // useEffect(() => {
+  //   console.log('!!!!!!!bileşen render oldu state veya prop değişti');
+  // });
+
+  //5) Dolu bağımlılık olayını izleme
+
+  useEffect(() => {
+    console.log('INPUT DEĞERİ DEĞİŞTİ: ', inputValue);
+  }, [inputValue]);
+
   return (
     <View style={styles.container}>
+      <TextInput
+        style={styles.input}
+        placeholder="Değer girin"
+        value={inputValue}
+        onChangeText={setInputValue}
+      />
+
       <TouchableOpacity
         onPress={() => setCount(count - 1)}
         disabled={count === 0}
@@ -50,7 +88,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#FFF574',
   },
   button: {
     paddingVertical: 10,
@@ -67,5 +104,14 @@ const styles = StyleSheet.create({
     fontSize: 60,
     fontWeight: 'bold',
     marginVertical: 20,
+  },
+  input: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    borderRadius: 5,
+    paddingHorizontal: 30,
+    marginBottom: 20,
+    width: '80%',
   },
 });
